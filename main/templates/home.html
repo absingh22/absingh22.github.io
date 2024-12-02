@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Home Page
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <!-- Home Section -->
+  <section id="home" class="home section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="title">
+        <img src="" alt="" data-aos="fade-in" class="" />
+        <h2>Hi, I'm Abhishek Singh</h2>
+        <p>
+          I'm
+          <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- End Home Section -->
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="title">
+        <h2>About</h2>
+        <p>{{ abouts.description }}</p>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="title">
+        <h2>Projects</h2>
+        <p>consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div>
+      {% comment %} <input type="text" id="name-search" placeholder="Search by name..." /> {% endcomment %}
+
+      <div class="tags-list">
+        <a href="#" class="tag" data-tag="all">ALL</a>
+        {% for tag in tags %}
+          {% comment %} <button class="tag" data-tag="{{ tag.name|lower }}">{{ tag.name }}</button> {% endcomment %}
+          <a href="#" class="tag" data-tag="{{ tag.name|lower }}">{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="projects-list">
+        {% for project in projects %}
+          <div class="project-item" data-name="{{ project.title|lower }}" data-tag="{{ project.tags.all|join:', '|lower }}">
+            <a href="{% url 'project' project.id %}">
+              <div class="project-image">
+                <div class="project-item-icon-box">
+                  <a href="{% url 'project' project.id %}"><ion-icon name="eye"></ion-icon></a>
+                </div>
+                <img class="img-box" src="{{ project.images.all.0.image.url }}" alt="{{ project.title }}" loading="lazy" />
+              </div>
+              <h3 class="project-title">{{ project.title }}</h3>
+              <p>{{ project.tags.all|join:', ' }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience section">
+    <div class="container">
+      <div class="title">
+        <h2>Experience</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div>
+    </div>
+  </section>
+  <!-- End Experience Section -->
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="title">
+        <h2>Skills</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div>
+    </div>
+  </section>
+  <!-- End Skills Section -->
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="title">
+        <h2>Contact</h2>
+        <p>Have a question or want to work together? Send me a message using the form.</p>
+      </div>
+      <div class="contact-form">
+        <form id="contact" action="" method="post">
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="" />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <input name="email" type="text" class="form-control" id="email" placeholder="Your email..." required="" />
+              </fieldset>
+            </div>
+            <div class="col-md-12">
+              <fieldset>
+                <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="" />
+              </fieldset>
+            </div>
+            <div class="col-md-12">
+              <fieldset>
+                <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+              </fieldset>
+            </div>
+            <div class="col-md-12">
+              <fieldset>
+                <button type="submit" id="form-submit" class="button">Send Message</button>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

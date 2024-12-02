@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Portfolio - Home
+      {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% block extrahead %}
+
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="{{ contacts.profilePicture.url }}" alt="Abhishek Singh" width="80" />
+        </figure>
+        <div class="info-content">
+          <h1 class="name" title="Abhishek Singh">Abhishek Singh</h1>
+          <p class="title">Data Scientist</p>
+        </div>
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        {% comment %} <div class="profile-img">
+          <img class="profile" src="{{ contacts.profilePicture }}" alt="Profile Picture" />
+        </div>
+        <a href="" class="logo"><h2 class="sitename">Abhishek Singh</h2></a> {% endcomment %}
+
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="home"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="" class="contact-title">Home</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="person"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="#about" class="contact-title">About</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="albums"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="#projects" class="contact-title">Projects</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="reader"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="#experience" class="contact-title">Experience</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="code-working"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="#skills" class="contact-title">Skills</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="call"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <a href="#contact" class="contact-title">Contact</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="mailto:{{ contacts.email }}" class="social-link"><ion-icon name="mail"></ion-icon></a>
+          </li>
+          <li class="social-item">
+            <a href="{{ contacts.github }}" class="social-link" target="_blank" title="GitHub Profile"><ion-icon name="logo-github"></ion-icon></a>
+          </li>
+          <li class="social-item">
+            <a href="{{ contacts.linkedin }}" class="social-link" target="_blank" title="LinkedIn Profile"><ion-icon name="logo-linkedin"></ion-icon></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+    {% block extra_js %}
+
+    {% endblock %}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
