@@ -30,6 +30,7 @@
     <div class="container">
       <div class="title">
         <h2>About</h2>
+        <div class="underline"></div>
         <p>{{ abouts.description }}</p>
       </div>
     </div>
@@ -41,6 +42,7 @@
     <div class="container">
       <div class="title">
         <h2>Projects</h2>
+        <div class="underline"></div>
         <p>consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
       </div>
       {% comment %} <input type="text" id="name-search" placeholder="Search by name..." /> {% endcomment %}
@@ -74,11 +76,34 @@
   <!-- End Projects Section -->
 
   <!-- Experience Section -->
-  <section id="experience" class="experience section">
+  <section id="experience" class="experiences section">
     <div class="container">
       <div class="title">
         <h2>Experience</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <div class="underline"></div>
+        {% comment %} <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> {% endcomment %}
+      </div>
+
+      <div class="experience-list">
+        {% for exp in experiences %}
+          <div class="experience-item">
+            <div class="experience-icon">
+              <span class="icon-circle"></span>
+            </div>
+            <div class="experience-content">
+              <h4 class="experience-item-title">{{ exp.organization }}</h4>
+              <p class="experience-role">{{ exp.jobTitle }}</p>
+              <span class="experience-dates">
+                {{ exp.startDate|date:'F Y' }} -{% if exp.endDate %}
+                  {{ exp.endDate|date:'F Y' }}
+                {% else %}
+                  Present
+                {% endif %}
+              </span>
+              <p class="experience-text">{{ exp.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -89,6 +114,7 @@
     <div class="container">
       <div class="title">
         <h2>Skills</h2>
+        <div class="underline"></div>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div>
     </div>
@@ -100,6 +126,7 @@
     <div class="container">
       <div class="title">
         <h2>Contact</h2>
+        <div class="underline"></div>
         <p>Have a question or want to work together? Send me a message using the form.</p>
       </div>
       <div class="contact-form">
