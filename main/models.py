@@ -56,7 +56,7 @@ class Experience(models.Model):
     organization = models.CharField(max_length=200)
     jobTitle = models.CharField(max_length=200)
     description = models.TextField()
-    startData = models.DateField(blank=True, null=True)
+    startDate = models.DateField(blank=True, null=True)
     endDate = models.DateField(blank=True, null=True)
 
     def __str__(self):

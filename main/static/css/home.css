@@ -110,19 +110,31 @@
 	font-weight: var(--fw-500);
 }
 
+.underline {
+	width: 4rem;
+	height: 0.4rem;
+	background-color: #dfd5d5;
+	margin: 0;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
 section {
 	display: flex;
 	box-sizing: border-box;
-	padding-left: 2rem;
-	padding-top: 1.5rem;
+	padding-top: 3rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	text-align: justify;
 }
 
 section h2 {
 	font-weight: 800;
 	font-size: 36px;
+	margin-bottom: 20px;
 }
 
 section p {
@@ -130,6 +142,7 @@ section p {
 	line-height: 1.5;
 	color: #dee1ec;
 }
+
 /*--------------------------------------------------------------
 # Home Section
 --------------------------------------------------------------*/
@@ -160,7 +173,6 @@ section p {
 	justify-content: left;
 	position: relative;
 	padding-bottom: 10rem;
-	text-align: justify;
 }
 
 /*--------------------------------------------------------------
@@ -173,6 +185,7 @@ section p {
 	justify-content: center;
 	position: relative;
 }
+
 /* tags */
 .projects .tags-list {
 	display: flex;
@@ -194,6 +207,7 @@ section p {
 .tag.active {
 	color: #b12adf;
 }
+
 /* projects */
 .projects .projects-list {
 	display: grid;
@@ -258,6 +272,52 @@ section p {
 	position: relative;
 	align-items: top;
 	justify-content: left;
+}
+
+.experience-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.experience-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.experience-icon {
+	flex: 0 0 30px;
+	position: relative;
+}
+
+.experience-icon .icon-circle {
+	width: 15px;
+	height: 15px;
+	background-color: #ead6d6;
+	border-radius: 50%;
+	position: absolute;
+	top: 5px;
+	left: 0;
+}
+
+.experience-item-title {
+	margin-bottom: 5px;
+}
+
+.experience-role {
+	font-style: italic;
+	margin-bottom: 5px;
+	font-size: 0.9rem;
+}
+
+.experience-dates {
+	font-size: 0.9rem;
+	margin-bottom: 10px;
+}
+
+.experience-text {
+	font-size: 0.9rem;
 }
 
 /*--------------------------------------------------------------
