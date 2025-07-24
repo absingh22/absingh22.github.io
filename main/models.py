@@ -12,9 +12,19 @@ class Home(models.Model):
 # About Section
 class About(models.Model):
     description = models.TextField()
+    recent_skills = models.TextField(
+        help_text="Enter recent skills separated by commas (e.g., LLMs, Ollama, LangChain)",
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return "About Section"
+
+    def get_recent_skills(self):
+        return [
+            skill.strip() for skill in self.recent_skills.split(",") if skill.strip()
+        ]
 
 
 # Project Section
@@ -35,6 +45,10 @@ class Project(models.Model):
     # organization = models.CharField(max_length=200, blank=True)
     # start_data = models.DateField(blank=True, null=True)
     # end_date = models.DateField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.title
@@ -58,9 +72,20 @@ class Experience(models.Model):
     description = models.TextField()
     startDate = models.DateField(blank=True, null=True)
     endDate = models.DateField(blank=True, null=True)
+    current = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-current", "-endDate", "-startDate"]
 
     def __str__(self):
         return self.organization
+
+    def get_bullet_points(self):
+        return [
+            point.strip() + "."
+            for point in self.description.split(".")
+            if point.strip()
+        ]
 
 
 # Skills
@@ -80,6 +105,7 @@ class Contact(models.Model):
     email = models.EmailField()
     github = models.URLField(max_length=200, blank=True)
     linkedin = models.URLField(max_length=200, blank=True)
+    resume = models.FileField(upload_to="resumes/", blank=True, null=True)
 
     def __str__(self):
         return self.name
